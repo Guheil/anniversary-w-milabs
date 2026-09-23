@@ -184,7 +184,7 @@
     nightLetterPaper: document.getElementById("nightLetterPaper"),
     nightLoveLetter: document.getElementById("nightLoveLetter"),
     nightLetterContent: document.getElementById("nightLetterContent"),
-    nightLetterLines: Array.from(document.querySelectorAll(".night-finale__letter-greeting, .night-finale__letter-line, .night-finale__letter-placeholder, .night-finale__letter-closing")),
+    nightLetterLines: Array.from(document.querySelectorAll(".night-finale__letter-greeting, .night-finale__letter-line, .night-finale__letter-closing")),
     nightEnvelopePieces: Array.from(document.querySelectorAll(".night-finale__envelope-back, .night-finale__envelope-front, .night-finale__pressed-flower")),
     nightEnding: document.getElementById("nightEnding"),
     nightFinalScene: document.getElementById("nightFinalScene"),
@@ -282,15 +282,15 @@
   }
 
   function applyCountdownZeroState() {
-    elements.countdownTitle.textContent = "waiting is over hehe";
-    elements.firstCopy.textContent = "waiting is over na milabs hehe";
+    elements.countdownTitle.textContent = "waiting is over :>";
+    elements.firstCopy.textContent = "waiting is over na milabs :>";
     elements.teaseCopy.textContent = "eto naaa, pwede na buksan :>";
     elements.countdown.setAttribute("aria-label", "Waiting is over. It is now September 24.");
   }
 
   function applyWaitingZeroState() {
     if (elements.lockedCopyLead) elements.lockedCopyLead.textContent = "waiting is overrr";
-    if (elements.lockedCopyMain) elements.lockedCopyMain.textContent = "here we go milabs hehe";
+    if (elements.lockedCopyMain) elements.lockedCopyMain.textContent = "here we go milabs :>";
     if (elements.lockedCopySub) elements.lockedCopySub.textContent = "pwede na buksan ang letter :>";
   }
 
@@ -387,7 +387,7 @@
     audio.volume = 0;
 
     const fadeToTarget = () => {
-      const targetVolume = 0.3;
+      const targetVolume = 0.9;
       const fadeDuration = reducedMotion.matches ? 900 : 6500;
       const startedAt = performance.now();
 
@@ -979,13 +979,13 @@
 
     applyCountdownZeroState();
     applyWaitingZeroState();
-    showLetterMessage("pwede na :>", "buksan mo na milabs hehe", liveMidnight ? 4200 : 3200);
+    showLetterMessage("pwede na :>", "buksan mo na milabs :>", liveMidnight ? 4200 : 3200);
   }
 
   function teaseLockedLetter() {
     state.letterAttempts += 1;
     const variants = [
-      ["wala pa sa 24 hehe", "sa 24 mo pa po maoopen huhu"],
+      ["wala pa sa 24 milabs", "sa 24 mo pa po maoopen huhu"],
       ["waleyy pa 😭", "sa 24 mo pa po maoopen huhu"],
       ["milabsss wala pa talaga HAHAHA", "sa 24 mo pa po maoopen huhu"],
     ];
@@ -1970,15 +1970,6 @@
        .to(elements.nightLetterLines[1], { opacity: 1, y: 0, duration: 2.4, ease: "power2.out" }, 98.4)
        .to(elements.nightPaperWorld, { backgroundColor: "#fff2ea", duration: 3.2, ease: "power1.inOut" }, 99.2)
        .to(elements.nightLetterLines[2], { opacity: 1, y: 0, duration: 2.4, ease: "power2.out" }, 100.4)
-       .to(elements.nightLetterContent, {
-          y: () => {
-            if (!isMobile) return 0;
-            const overflow = Math.max(0, elements.nightLetterContent.scrollHeight - elements.nightLoveLetter.clientHeight + 18);
-            return -Math.min(overflow * 0.46, 110);
-          },
-          duration: 2.6,
-          ease: "power1.inOut"
-        }, 100.9)
        .to(elements.nightDoodles, {
           y: (index) => index % 2 === 0 ? 5 : -5,
           x: (index) => index % 3 === 0 ? 8 : (index % 3 === 1 ? -6 : 5),
@@ -1987,19 +1978,9 @@
           stagger: 0.06,
           ease: "power1.inOut"
         }, 101.0)
-       .to(elements.nightLetterLines[3], { opacity: 1, y: 0, duration: 2.4, ease: "power2.out" }, 102.4)
-       .to(elements.nightPaperWorld, { backgroundColor: "#fdf4ea", duration: 3.0, ease: "power1.inOut" }, 103.1)
-       .to(elements.nightLetterLines[4], { opacity: 1, y: 0, duration: 2.4, ease: "power2.out" }, 104.4)
-       .to(elements.nightLetterContent, {
-          y: () => {
-            if (!isMobile) return 0;
-            const overflow = Math.max(0, elements.nightLetterContent.scrollHeight - elements.nightLoveLetter.clientHeight + 18);
-            return -Math.min(overflow, 220);
-          },
-          duration: 2.7,
-          ease: "power1.inOut"
-        }, 104.8)
-      .to(elements.nightEnding, { opacity: 1, y: 0, duration: 3.8, ease: "power2.out" }, 107)
+       .to(elements.nightPaperWorld, { backgroundColor: "#fdf4ea", duration: 3.0, ease: "power1.inOut" }, 102.1)
+       .to(elements.nightLetterLines[3], { opacity: 1, y: 0, duration: 2.4, ease: "power2.out" }, 102.6)
+      .to(elements.nightEnding, { opacity: 1, y: 0, duration: 3.8, ease: "power2.out" }, 106.2)
       .to(elements.nightLetterPaper, { opacity: 0.12, duration: 4.6, ease: "power1.inOut" }, 111)
       .to(elements.nightEnding, { opacity: 0.18, duration: 4.4, ease: "power1.inOut" }, 111)
       .to(elements.nightPlayfulDoodles, { opacity: 0.08, duration: 4.4, ease: "power1.inOut" }, 111)
